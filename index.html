@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipment Form</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+  <div id="toast" class="toast"></div>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    Equipment Form
+  </header>
+
+  <!-- Categories & items -->
+  <div class="container" id="app"></div>
+
+  <!-- Floating submit button -->
+  <button class="submit" id="submitBtn" onclick="submitAll()">
+  <span class="btn-text">Submit</span>
+  <span class="spinner"></span>
+</button>
+
+
+  <!-- Quantity modal -->
+  <div class="modal" id="modal" onclick="overlayClose(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-title" id="modalTitle"></div>
+
+      <div class="qty-control">
+        <button type="button" onclick="changeQty(-1)">−</button>
+        <input
+  type="number"
+  id="qty"
+  min="0"
+  max="99999"
+  maxlength="5"
+  inputmode="numeric"
+  autocomplete="off"
+/>
+
+        <button type="button" onclick="changeQty(1)">+</button>
+      </div>
+
+      <div class="presets">
+        <div class="preset">1</div>
+        <div class="preset">3</div>
+        <div class="preset">5</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- App logic -->
+  <script src="app.js"></script>
+</body>
+</html>

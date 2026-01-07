@@ -1,0 +1,174 @@
+{
+  "Routers & equimpement": [
+    { "id": "3001001", "name": "Rb4011" },
+    { "id": "3001204", "name": "Eero 6 +" },
+    { "id": "3001205", "name": "Eero Pro 6 E" },
+    { "id": "3001207", "name": "Eero 6+ mount" },
+    { "id": "3001208", "name": "Eero Pro 6 E Mount" },
+    { "id": "3001006", "name": "Hex Switch" },
+    { "id": "3001002", "name": "hAP AC Switch" },
+    { "id": "3021008", "name": "Power Bar" },
+    { "id": "3001003", "name": "cAP" },
+    { "id": "3001004", "name": "wAP" },
+    { "id": "3001100", "name": "KAON 2100" },
+    { "id": "3001101", "name": "KAON Remote" },
+    { "id": "3001105", "name": "KAON 6200" },
+    { "id": "3002500", "name": "Coax/Ethernet Adaptor" },
+    { "id": "3000150", "name": "Transceiver (blue)" },
+    { "id": "3000151", "name": "Transceiver (Yellow)(Purple)" },
+    { "id": "3001000", "name": "Media Converter (Optcore)" },
+    { "id": "3001005", "name": "Media converter (Mikrotik)" },
+    { "id": "3001209", "name": "Eero POE 6" },
+    { "id": "3001210", "name": "Eero POE Gateway" },
+    { "id": "3001211", "name": "Eero Outdoor 7" },
+    { "id": "3001212", "name": "Eero Outdoor 7 PoE Cable" }
+  ],
+
+  "Fiber lengths": [
+    { "id": "3000002", "name": "5 ft Install Cable" },
+    { "id": "3000003", "name": "10 ft Install Cable" },
+    { "id": "3000005", "name": "25 ft Install Cable" },
+    { "id": "3000006", "name": "35 ft Install Cable" },
+    { "id": "3000007", "name": "50 ft Install Cable" },
+    { "id": "3000008", "name": "75 ft Install Cable" },
+    { "id": "3000009", "name": "100 ft Install Cable" },
+    { "id": "3000010", "name": "125 ft Install Cable" },
+    { "id": "3000011", "name": "150 ft Install Cable" },
+    { "id": "3000012", "name": "200 ft Install Cable" },
+    { "id": "3000013", "name": "250 ft Install Cable" },
+    { "id": "3000014", "name": "300 ft Install Cable" },
+    { "id": "3000015", "name": "350 ft Install Cable" },
+    { "id": "3000016", "name": "400 ft Install Cable" },
+    { "id": "3000017", "name": "450 ft Install Cable" },
+    { "id": "3000018", "name": "500 ft Install Cable" },
+    { "id": "3000050", "name": "25ft LC install Cable" },
+    { "id": "3000051", "name": "50ft LC Install Cable" },
+    { "id": "3000052", "name": "75ft LC Install Cable" },
+    { "id": "3000053", "name": "100ft LC Install Cable" },
+    { "id": "3000054", "name": "125ft LC Install Cable" },
+    { "id": "3000055", "name": "300ft LC Install Cable" }
+  ],
+
+  "Other": [
+    { "id": "1009150C", "name": "Nid" },
+    { "id": "3002600", "name": "Seal Tags" },
+    { "id": "1009151", "name": "Faceplate" },
+    { "id": "2000904", "name": "Green bulkhead" },
+    { "id": "3000408", "name": "APC Mechanical Splice" },
+    { "id": "3000410", "name": "UPC Mechanical Splice" }
+  ],
+
+  "Cat5e Material": [
+    { "id": "3000400", "name": "Cat 5E 6 ft" },
+    { "id": "3002702", "name": "Cat 5E cable (1000')" },
+    { "id": "3002705", "name": "Cat 6 Cable (1000')" },
+    { "id": "3002704", "name": "Cat 5E RJ45 Ends" },
+    { "id": "3002706", "name": "Cat 6 RJ45 Ends" },
+    { "id": "3002754", "name": "1G LV mounting bracket" },
+    { "id": "3000401", "name": "Cat 5E quickport connector" },
+    { "id": "3002755", "name": "Blank wall plate white" },
+    { "id": "3002750", "name": "1 port wall plate white" },
+    { "id": "3002751", "name": "2 port wall plate white" },
+    { "id": "3002752", "name": "3 port wall plate white" },
+    { "id": "3002753", "name": "4 port wall plate white" }
+  ],
+
+  "PVC Conduit Material": [
+    { "id": "2005100", "name": "3/4\"x10' PVC conduit" },
+    { "id": "2005105", "name": "3/4\" PVC 90 deg elbow" },
+    { "id": "2005108", "name": "3/4\" PVC T, Back" },
+    { "id": "2005106", "name": "3/4\" PVC T, Side" },
+    { "id": "2005104", "name": "3/4\" PVC Expand joint" },
+    { "id": "2005101", "name": "3/4\" PVC hole strap" },
+    { "id": "2005103", "name": "3/4\" PVC LB Fitting" },
+    { "id": "2005102", "name": "3/4\" PVC T.A***" },
+    { "id": "2005107", "name": "3/4\" PVC Coupler" },
+    { "id": "2006017", "name": "3/4\" PVC TA Steel Locknut" }
+  ],
+
+  "EMT Piping": [
+    { "id": "2004000", "name": "1/2\" EMT Conduit" },
+    { "id": "2004004", "name": "1/2\" EMT LB Fitting" },
+    { "id": "2004001", "name": "1/2\" EMT 1 hole Strap" },
+    { "id": "2004002", "name": "1/2\" EMT Screw connector" },
+    { "id": "2004003", "name": "1/2\" EMT Coupler" },
+    { "id": "2004005", "name": "1/2\" EMT TB Side" },
+    { "id": "2004100", "name": "3/4\" EMT Conduit" },
+    { "id": "2004107", "name": "3/4\" EMT LB Fitting" },
+    { "id": "2004101", "name": "3/4\" EMT 1 Hole Strap" },
+    { "id": "2004103", "name": "3/4\" EMT screw Connector" },
+    { "id": "2004104", "name": "3/4\" EMT Coupler" },
+    { "id": "2004105", "name": "3/4\" EMT TB Side" },
+    { "id": "2006004", "name": "4\" square box 1.5\" Deep" },
+    { "id": "2006020", "name": "4\" x 2\" utility box" }
+  ],
+
+  "MDU Material": [
+    { "id": "3000405", "name": "2U Switch Rack" },
+    { "id": "3000301", "name": "ECX 1U 19\"" },
+    { "id": "3000302", "name": "ECX Cassette, SC/APC" },
+    { "id": "3000304", "name": "ECX Cassette, SC/UPC" },
+    { "id": "2000400", "name": "SC/UPC Pigtail 12ct" },
+    { "id": "2000401", "name": "SC/APC Pigtail 12ct" },
+    { "id": "2000410", "name": "SC/UPC Pigtail 1ct" },
+    { "id": "2000402", "name": "SC/APC Pigtail 1ct" },
+    { "id": "2000405", "name": "LC/UPC Pigtail 1ct" },
+    { "id": "3000200", "name": "Invisilight 1ct" },
+    { "id": "3000202", "name": "Invisilight 12ct" },
+    { "id": "3000203", "name": "Invisilight 24ct" },
+    { "id": "3000201", "name": "1ct fiber" },
+    { "id": "3000407", "name": "MDU NID" },
+    { "id": "3000204", "name": "Slimbox wallplate" },
+    { "id": "3000205", "name": "20m Module" },
+    { "id": "3000206", "name": "Tuff Fiber 12ct" },
+    { "id": "3001304", "name": "1 Meter DAC Cable" },
+    { "id": "3001303", "name": "3 Meter DAC Cable" }
+  ],
+
+  "Cable concealer": [
+    { "id": "3002801", "name": "Raceway" },
+    { "id": "3002804", "name": "Flat elbow" },
+    { "id": "3002806", "name": "inside elbow" },
+    { "id": "3002810", "name": "joint cover" },
+    { "id": "3002811", "name": "T fitting" },
+    { "id": "3002812", "name": "outside elbow" },
+    { "id": "3002813", "name": "End Cap" }
+  ],
+
+  "Phone equipment": [
+    { "id": "3020026", "name": "Grandstream HT801" },
+    { "id": "3020008", "name": "Grandstream GXP1625" },
+    { "id": "3020013", "name": "Grandstream DP750" },
+    { "id": "3020002", "name": "Grandstream DP722" },
+    { "id": "3020602", "name": "Ez RJ11" }
+  ],
+
+  "High speed plan equipment": [
+    { "id": "3001300", "name": "CRS 305" },
+    { "id": "3001008", "name": "10GB Media converter (Optcore)" },
+    { "id": "3000157", "name": "RJ45 1G Transceiver" },
+    { "id": "3000159", "name": "RJ45 2.5G Transceiver" },
+    { "id": "3000156", "name": "RJ45 10G Transceiver" },
+    { "id": "3000163", "name": "C-temp CX 10G Transceiver" },
+    { "id": "3000162", "name": "C-temp RCO 10G Transceiver" },
+    { "id": "2000002", "name": "Yellow LC patch cable" },
+    { "id": "2000903", "name": "Blue bulkhead" },
+    { "id": "3000170", "name": "I-temp RCO 10G Transceiver" },
+    { "id": "3000171", "name": "I-temp CX 10G Transceiver" },
+	{ "id": "3000161", "name": "Green 10G Transceiver (40Km)" },
+    { "id": "3000160", "name": "Grey 10G Tranceiver (40Km)" }
+  ],
+
+  "Long Distance Transceivers": [
+    { "id": "3000164", "name": "Blue Transceiver (40Km)" },
+    { "id": "3000165", "name": "Purple Tranceiver (40Km)" },
+    { "id": "3000166", "name": "Orange Transceiver (80Km)" },
+    { "id": "3000167", "name": "Yellow Transceiver (80Km)" }
+  ],
+
+
+  "MDU Switches": [
+    { "id": "3001301", "name": "CRS326" },
+    { "id": "3001302", "name": "CRS328" }
+  ]
+}

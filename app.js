@@ -264,3 +264,21 @@ function setSubmitLoading(isLoading) {
     text.innerText = "Submit";
   }
 }
+
+document.querySelectorAll(".nav-item").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const page = btn.dataset.page;
+
+    // nav buttons
+    document.querySelectorAll(".nav-item").forEach(b =>
+      b.classList.remove("active")
+    );
+    btn.classList.add("active");
+
+    // pages
+    document.querySelectorAll(".page").forEach(p =>
+      p.classList.remove("active")
+    );
+    document.getElementById(`page-${page}`).classList.add("active");
+  });
+});

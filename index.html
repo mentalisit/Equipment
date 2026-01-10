@@ -6,14 +6,35 @@
   <title>Equipment Form</title>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=1.0.3">
   <div id="toast" class="toast"></div>
 </head>
 <body>
 
   <!-- Header -->
   <header>
-    Equipment Form
+  <nav class="top-nav">
+   <a href="index.html" class="nav-item active">Equipment</a>
+  <a href="codes.html" class="nav-item">RC Settings</a>
+  <a href="rco.html" class="nav-item">Coordinates RCO</a>
+</nav>
+
+<!-- Pages -->
+<div class="page active" id="page-equipment">
+  <div class="container" id="app"></div>
+</div>
+
+<div class="page" id="page-remote">
+  <div class="placeholder">
+    Remote control settings (coming soon)
+  </div>
+</div>
+
+<div class="page" id="page-rco">
+  <div class="placeholder">
+    RCO coordinates (coming soon)
+  </div>
+</div>
   </header>
 
   <!-- Categories & items -->
@@ -55,6 +76,6 @@
   </div>
 
   <!-- App logic -->
-  <script src="app.js"></script>
+  <script src="app.js?v=1.0.3"></script>
 </body>
 </html>

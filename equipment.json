@@ -57,6 +57,22 @@
     { "id": "3000408", "name": "APC Mechanical Splice" },
     { "id": "3000410", "name": "UPC Mechanical Splice" }
   ],
+  
+  "High speed plan equipment": [
+    { "id": "3001300", "name": "CRS 305" },
+    { "id": "3001008", "name": "10GB Media converter (Optcore)" },
+    { "id": "3000157", "name": "RJ45 1G Transceiver" },
+    { "id": "3000159", "name": "RJ45 2.5G Transceiver" },
+    { "id": "3000156", "name": "RJ45 10G Transceiver" },
+    { "id": "3000163", "name": "C-temp CX 10G Transceiver" },
+    { "id": "3000162", "name": "C-temp RCO 10G Transceiver" },
+    { "id": "2000002", "name": "Yellow LC patch cable" },
+    { "id": "2000903", "name": "Blue bulkhead" },
+    { "id": "3000170", "name": "I-temp RCO 10G Transceiver" },
+    { "id": "3000171", "name": "I-temp CX 10G Transceiver" },
+	{ "id": "3000161", "name": "Green 10G Transceiver (40Km)" },
+    { "id": "3000160", "name": "Grey 10G Tranceiver (40Km)" }
+  ],
 
   "Cat5e Material": [
     { "id": "3000400", "name": "Cat 5E 6 ft" },
@@ -86,23 +102,26 @@
     { "id": "2006017", "name": "3/4\" PVC TA Steel Locknut" }
   ],
 
-  "EMT Piping": [
-    { "id": "2004000", "name": "1/2\" EMT Conduit" },
-    { "id": "2004004", "name": "1/2\" EMT LB Fitting" },
-    { "id": "2004001", "name": "1/2\" EMT 1 hole Strap" },
-    { "id": "2004002", "name": "1/2\" EMT Screw connector" },
-    { "id": "2004003", "name": "1/2\" EMT Coupler" },
-    { "id": "2004005", "name": "1/2\" EMT TB Side" },
-    { "id": "2004100", "name": "3/4\" EMT Conduit" },
-    { "id": "2004107", "name": "3/4\" EMT LB Fitting" },
-    { "id": "2004101", "name": "3/4\" EMT 1 Hole Strap" },
-    { "id": "2004103", "name": "3/4\" EMT screw Connector" },
-    { "id": "2004104", "name": "3/4\" EMT Coupler" },
-    { "id": "2004105", "name": "3/4\" EMT TB Side" },
-    { "id": "2006004", "name": "4\" square box 1.5\" Deep" },
-    { "id": "2006020", "name": "4\" x 2\" utility box" }
+  "Phone equipment": [
+    { "id": "3020026", "name": "Grandstream HT801" },
+    { "id": "3020008", "name": "Grandstream GXP1625" },
+    { "id": "3020013", "name": "Grandstream DP750" },
+    { "id": "3020002", "name": "Grandstream DP722" },
+    { "id": "3020602", "name": "Ez RJ11" }
   ],
 
+  "Long Distance Transceivers": [
+    { "id": "3000164", "name": "Blue Transceiver (40Km)" },
+    { "id": "3000165", "name": "Purple Tranceiver (40Km)" },
+    { "id": "3000166", "name": "Orange Transceiver (80Km)" },
+    { "id": "3000167", "name": "Yellow Transceiver (80Km)" }
+  ],
+
+  "MDU Switches": [
+    { "id": "3001301", "name": "CRS326" },
+    { "id": "3001302", "name": "CRS328" }
+  ],
+  
   "MDU Material": [
     { "id": "3000405", "name": "2U Switch Rack" },
     { "id": "3000301", "name": "ECX 1U 19\"" },
@@ -124,7 +143,24 @@
     { "id": "3001304", "name": "1 Meter DAC Cable" },
     { "id": "3001303", "name": "3 Meter DAC Cable" }
   ],
-
+  
+  "EMT Piping": [
+    { "id": "2004000", "name": "1/2\" EMT Conduit" },
+    { "id": "2004004", "name": "1/2\" EMT LB Fitting" },
+    { "id": "2004001", "name": "1/2\" EMT 1 hole Strap" },
+    { "id": "2004002", "name": "1/2\" EMT Screw connector" },
+    { "id": "2004003", "name": "1/2\" EMT Coupler" },
+    { "id": "2004005", "name": "1/2\" EMT TB Side" },
+    { "id": "2004100", "name": "3/4\" EMT Conduit" },
+    { "id": "2004107", "name": "3/4\" EMT LB Fitting" },
+    { "id": "2004101", "name": "3/4\" EMT 1 Hole Strap" },
+    { "id": "2004103", "name": "3/4\" EMT screw Connector" },
+    { "id": "2004104", "name": "3/4\" EMT Coupler" },
+    { "id": "2004105", "name": "3/4\" EMT TB Side" },
+    { "id": "2006004", "name": "4\" square box 1.5\" Deep" },
+    { "id": "2006020", "name": "4\" x 2\" utility box" }
+  ],
+  
   "Cable concealer": [
     { "id": "3002801", "name": "Raceway" },
     { "id": "3002804", "name": "Flat elbow" },
@@ -133,42 +169,5 @@
     { "id": "3002811", "name": "T fitting" },
     { "id": "3002812", "name": "outside elbow" },
     { "id": "3002813", "name": "End Cap" }
-  ],
-
-  "Phone equipment": [
-    { "id": "3020026", "name": "Grandstream HT801" },
-    { "id": "3020008", "name": "Grandstream GXP1625" },
-    { "id": "3020013", "name": "Grandstream DP750" },
-    { "id": "3020002", "name": "Grandstream DP722" },
-    { "id": "3020602", "name": "Ez RJ11" }
-  ],
-
-  "High speed plan equipment": [
-    { "id": "3001300", "name": "CRS 305" },
-    { "id": "3001008", "name": "10GB Media converter (Optcore)" },
-    { "id": "3000157", "name": "RJ45 1G Transceiver" },
-    { "id": "3000159", "name": "RJ45 2.5G Transceiver" },
-    { "id": "3000156", "name": "RJ45 10G Transceiver" },
-    { "id": "3000163", "name": "C-temp CX 10G Transceiver" },
-    { "id": "3000162", "name": "C-temp RCO 10G Transceiver" },
-    { "id": "2000002", "name": "Yellow LC patch cable" },
-    { "id": "2000903", "name": "Blue bulkhead" },
-    { "id": "3000170", "name": "I-temp RCO 10G Transceiver" },
-    { "id": "3000171", "name": "I-temp CX 10G Transceiver" },
-	{ "id": "3000161", "name": "Green 10G Transceiver (40Km)" },
-    { "id": "3000160", "name": "Grey 10G Tranceiver (40Km)" }
-  ],
-
-  "Long Distance Transceivers": [
-    { "id": "3000164", "name": "Blue Transceiver (40Km)" },
-    { "id": "3000165", "name": "Purple Tranceiver (40Km)" },
-    { "id": "3000166", "name": "Orange Transceiver (80Km)" },
-    { "id": "3000167", "name": "Yellow Transceiver (80Km)" }
-  ],
-
-
-  "MDU Switches": [
-    { "id": "3001301", "name": "CRS326" },
-    { "id": "3001302", "name": "CRS328" }
   ]
 }

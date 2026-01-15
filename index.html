@@ -6,7 +6,7 @@
   <title>Equipment Form</title>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css?v=1.0.3">
+  <link rel="stylesheet" href="styles.css?v=1.0.4">
   <div id="toast" class="toast"></div>
 </head>
 <body>
@@ -21,7 +21,6 @@
 
 <!-- Pages -->
 <div class="page active" id="page-equipment">
-  <div class="container" id="app"></div>
 </div>
 
 <div class="page" id="page-remote">
@@ -37,6 +36,13 @@
 </div>
   </header>
 
+  <!-- Equipment/Materials requests button -->
+  <div class="container">
+    <button class="equipment-requests-btn" id="equipmentRequestsBtn" onclick="submitEquipmentRequests()">
+      Equipment/Materials requests
+    </button>
+  </div>
+
   <!-- Categories & items -->
   <div class="container" id="app"></div>
 
@@ -46,6 +52,36 @@
   <span class="spinner"></span>
 </button>
 
+
+  <!-- Equipment/Materials requests modal -->
+  <div class="modal" id="requestsModal" onclick="overlayCloseRequests(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-title">Equipment/Materials Request</div>
+      
+      <div class="form-group">
+        <label for="requesterName">Your Name:</label>
+        <input type="text" id="requesterName" placeholder="Enter your name" autocomplete="off">
+      </div>
+      
+      <div class="form-group">
+        <label for="materialSelect">Select Equipment/Material:</label>
+        <select id="materialSelect" class="material-select">
+          <option value="">Select from list...</option>
+          <option value="custom">Enter custom material...</option>
+        </select>
+      </div>
+      
+      <div class="form-group" id="customMaterialGroup" style="display: none;">
+        <label for="materialInput">Custom Material:</label>
+        <input type="text" id="materialInput" placeholder="Enter custom material..." autocomplete="off">
+      </div>
+      
+      <div class="modal-buttons">
+        <button type="button" class="cancel-btn" onclick="closeRequestsModal()">Cancel</button>
+        <button type="button" class="send-btn" id="sendRequestsBtn" onclick="sendRequestWithDetails()">Send Request</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Quantity modal -->
   <div class="modal" id="modal" onclick="overlayClose(event)">
@@ -76,6 +112,6 @@
   </div>
 
   <!-- App logic -->
-  <script src="app.js?v=1.0.3"></script>
+  <script src="app.js?v=1.0.4"></script>
 </body>
 </html>

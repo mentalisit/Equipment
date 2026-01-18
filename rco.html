@@ -1,74 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RCO Coordinates</title>
 
-  <link rel="stylesheet" href="rco_styles.css?v=1.0.3">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="header.css?v=1.0.6">
+  <link rel="stylesheet" href="rco_styles.css?v=1.0.6">
 </head>
 
 <body>
+  <div id="main-header"></div>
+  <script src="header.js?v=1.0.6"></script>
 
-<!-- Navigation -->
-<nav class="top-nav">
-  <a href="index.html" class="nav-item">Equipment</a>
-  <a href="codes.html" class="nav-item">RC Settings</a>
-  <a href="rco.html" class="nav-item active">Coordinates RCO</a>
-</nav>
+  <div class="container">
 
-<div class="container">
+    <div class="page-header">
+      <h2>RCO</h2>
+      <div class="header-actions">
+        <button class="mini-btn" id="miniListBtn">Mini RCO List</button>
+        <button class="add-btn" onclick="toggleForm()">Add</button>
+      </div>
+    </div>
 
-  <div class="page-header">
-    <h2>RCO</h2>
-    <div class="header-actions">
-      <button class="mini-btn" id="miniListBtn">Mini RCO List</button>
-      <button class="add-btn" onclick="toggleForm()">Add</button>
+    <!-- Add form -->
+    <div class="form" id="form">
+      <input type="text" id="name" placeholder="Name">
+      <input type="text" id="coords" placeholder="Coordinates (lat,lng)">
+
+      <div class="toggle">
+        <input type="radio" name="rcoType" id="typeRCO" value="RCO">
+        <input type="radio" name="rcoType" id="typeMini" value="miniRCO">
+
+        <label class="toggle-label">
+          <div class="toggle-option" onclick="selectType('RCO')">RCO</div>
+          <div class="toggle-option" onclick="selectType('miniRCO')">miniRCO</div>
+        </label>
+      </div>
+
+
+      <button class="save-btn" onclick="saveRCO()">Save</button>
+    </div>
+
+    <!-- List -->
+    <div id="loader" class="loader">Loading…</div>
+    <div class="rco-list" id="rcoList"></div>
+
+  </div>
+
+  <div class="modal" id="miniModal" aria-hidden="true" style="display:none">
+    <div class="modal-content">
+      <button class="close-modal" id="miniModalClose" aria-label="Close">×</button>
+      <h3>Mini RCO List</h3>
+      <p><strong>KEY REQUIRED</strong></p>
+      <ul>
+        <li>Whitemouth</li>
+        <li>St Eustache</li>
+        <li>Narrows</li>
+        <li>Moosehorn</li>
+        <li>Fisher Branch</li>
+        <li>Granite Hills</li>
+        <li>Woodridge</li>
+      </ul>
     </div>
   </div>
 
-  <!-- Add form -->
-  <div class="form" id="form">
-    <input type="text" id="name" placeholder="Name">
-    <input type="text" id="coords" placeholder="Coordinates (lat,lng)">
+  <footer class="page-footer-info" onclick="copyPassword()">
+    P/W: <span id="pwText">VFW!F!P455</span> <span class="copy-icon">📋</span>
+  </footer>
 
-    <div class="toggle">
-  <input type="radio" name="rcoType" id="typeRCO" value="RCO">
-  <input type="radio" name="rcoType" id="typeMini" value="miniRCO">
-
-  <label class="toggle-label">
-    <div class="toggle-option" onclick="selectType('RCO')">RCO</div>
-    <div class="toggle-option" onclick="selectType('miniRCO')">miniRCO</div>
-  </label>
-</div>
-
-
-    <button class="save-btn" onclick="saveRCO()">Save</button>
-  </div>
-
-  <!-- List -->
-  <div id="loader" class="loader">Loading…</div>
-  <div class="rco-list" id="rcoList"></div>
-
-</div>
-
-<div class="modal" id="miniModal" aria-hidden="true" style="display:none">
-  <div class="modal-content">
-    <button class="close-modal" id="miniModalClose" aria-label="Close">×</button>
-    <h3>Mini RCO List</h3>
-    <p><strong>KEY REQUIRED</strong></p>
-    <ul>
-      <li>Whitemouth</li>
-      <li>St Eustache</li>
-      <li>Narrows</li>
-      <li>Moosehorn</li>
-      <li>Fisher Branch</li>
-      <li>Granite Hills</li>
-      <li>Woodridge</li>
-    </ul>
-  </div>
-</div>
-
-<script src="rco_app.js?v=1.0.3"></script>
+  <script src="rco_app.js?v=1.0.6"></script>
 </body>
+
 </html>

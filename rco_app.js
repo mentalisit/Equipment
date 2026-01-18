@@ -132,39 +132,50 @@ function saveRCO() {
     method: "POST",
     body: JSON.stringify({ name, coords, type })
   })
-  .then(async res => {
-    const text = await res.text();
+    .then(async res => {
+      const text = await res.text();
 
-    let data;
-    try {
-      data = JSON.parse(text);
-    } catch {
-      throw new Error("Invalid server response");
-    }
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        throw new Error("Invalid server response");
+      }
 
-    if (data.error) {
-      alert(data.error);
-      return;
-    }
+      if (data.error) {
+        alert(data.error);
+        return;
+      }
 
-    // успех
-    document.getElementById("form").style.display = "none";
-    document.querySelector(".add-btn").textContent = "Add";
+      // успех
+      document.getElementById("form").style.display = "none";
+      document.querySelector(".add-btn").textContent = "Add";
 
-    document.getElementById("name").value = "";
-    document.getElementById("coords").value = "";
-    selectedType = null;
+      document.getElementById("name").value = "";
+      document.getElementById("coords").value = "";
+      selectedType = null;
 
-    document
-      .querySelectorAll(".toggle-option")
-      .forEach(el => el.classList.remove("active"));
+      document
+        .querySelectorAll(".toggle-option")
+        .forEach(el => el.classList.remove("active"));
 
-    loadRCO();
-  })
-  .catch(err => {
-    alert(err.message || "Network error");
-  });
+      loadRCO();
+    })
+    .catch(err => {
+      alert(err.message || "Network error");
+    });
 }
 
 
 loadRCO();
+
+function copyPassword() {
+  const pw = document.getElementById("pwText").innerText;
+  navigator.clipboard.writeText(pw).then(() => {
+    // Simple visual feedback
+    const icon = document.querySelector(".copy-icon");
+    const original = icon.innerText;
+    icon.innerText = "✅";
+    setTimeout(() => icon.innerText = original, 1500);
+  });
+}

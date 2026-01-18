@@ -1,91 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Buckeye Kaon Remote Codes</title>
 
-<link rel="stylesheet" href="codes_styles.css?v=1.0.3">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buckeye Kaon Remote Codes</title>
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="header.css?v=1.0.6">
+  <link rel="stylesheet" href="codes_styles.css?v=1.0.6">
 </head>
 
 <body>
-<div class="container">
+  <div id="main-header"></div>
+  <script src="header.js?v=1.0.6"></script>
 
-<nav class="top-nav">
-  <a href="index.html" class="nav-item">Equipment</a>
-  <a href="codes.html" class="nav-item active">RC Settings</a>
-  <a href="rco.html" class="nav-item">Coordinates RCO</a>
-</nav>
+  <div class="container">
 
-<header class="header-bar">
-  <div class="title-row">
-    <h1 id="title">Buckeye Kaon Remote Codes</h1>
+    <header class="header-bar">
+      <div class="title-row">
+        <h1 id="title">Buckeye Kaon Remote Codes</h1>
+      </div>
+
+      <p id="subtitle">Select section, letter and brand</p>
+    </header>
+
+    <div class="section-toggle">
+      <button id="tvToggle" class="toggle-btn active">TV</button>
+      <button id="audioToggle" class="toggle-btn">Audio</button>
+    </div>
+
+    <select id="letterSelect"></select>
+    <select id="brandSelect"></select>
+
+    <h2 id="codesTitle"></h2>
+
+    <div class="codes-display">
+      <div id="allTriedHint" class="all-tried-hint" style="display:none">
+        <strong>✅ All codes checked</strong><br>
+        Use manual search: hold <b>SET</b> → enter <b>991</b> → CHANNEL UP
+      </div>
+      <div class="codes-list" id="codesList"></div>
+    </div>
+
+    <div id="loading" class="loading" style="display:none"></div>
+    <div id="error" class="error" style="display:none"></div>
+    <div id="noData" class="no-data" style="display:none"></div>
+
+    <footer>
+      <div class="action-buttons">
+        <button class="info-btn" data-modal="code-search-modal">Code Search</button>
+        <button class="info-btn" data-modal="factory-reset-modal">Factory Reset</button>
+      </div>
+      <p id="source"></p>
+      <p>© 2021 Kaonmedia Co., Ltd.</p>
+    </footer>
+
   </div>
 
-  <p id="subtitle">Select section, letter and brand</p>
-</header>
-
-<div class="section-toggle">
-  <button id="tvToggle" class="toggle-btn active">TV</button>
-  <button id="audioToggle" class="toggle-btn">Audio</button>
-</div>
-
-<select id="letterSelect"></select>
-<select id="brandSelect"></select>
-
-<h2 id="codesTitle"></h2>
-
-<div class="codes-display">
-<div id="allTriedHint" class="all-tried-hint" style="display:none">
-  <strong>✅ All codes checked</strong><br>
-  Use manual search: hold <b>SET</b> → enter <b>991</b> → CHANNEL UP
-</div>
-  <div class="codes-list" id="codesList"></div>
-</div>
-
-<div id="loading" class="loading" style="display:none"></div>
-<div id="error" class="error" style="display:none"></div>
-<div id="noData" class="no-data" style="display:none"></div>
-
-<footer>
-  <div class="action-buttons">
-    <button class="info-btn" data-modal="code-search-modal">Code Search</button>
-    <button class="info-btn" data-modal="factory-reset-modal">Factory Reset</button>
+  <div class="modal" id="code-search-modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close-modal" data-modal="code-search-modal" aria-label="Close">×</button>
+      <h3>Code Search Instructions</h3>
+      <p>To search for the remote control code for your TV, use the following sequence:</p>
+      <ul>
+        <li>Press and hold the <strong>SET</strong> button until the remote LED light turns white.</li>
+        <li>On the remote, press <strong>9 9 1</strong>.</li>
+        <li>Press the <strong>CH+</strong> button sequentially until the TV turns off.</li>
+        <li>Press the <strong>OK</strong> button to store this code in the remote.</li>
+      </ul>
+      <p>Successful programming is indicated by two blinks of the white LED light.</p>
+    </div>
   </div>
-  <p id="source"></p>
-  <p>© 2021 Kaonmedia Co., Ltd.</p>
-</footer>
 
-</div>
-
-<div class="modal" id="code-search-modal" aria-hidden="true">
-  <div class="modal-content">
-    <button class="close-modal" data-modal="code-search-modal" aria-label="Close">×</button>
-    <h3>Code Search Instructions</h3>
-    <p>To search for the remote control code for your TV, use the following sequence:</p>
-    <ul>
-      <li>Press and hold the <strong>SET</strong> button until the remote LED light turns white.</li>
-      <li>On the remote, press <strong>9 9 1</strong>.</li>
-      <li>Press the <strong>CH+</strong> button sequentially until the TV turns off.</li>
-      <li>Press the <strong>OK</strong> button to store this code in the remote.</li>
-    </ul>
-    <p>Successful programming is indicated by two blinks of the white LED light.</p>
+  <div class="modal" id="factory-reset-modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close-modal" data-modal="factory-reset-modal" aria-label="Close">×</button>
+      <h3>Factory Reset Instructions</h3>
+      <p>At any time, the remote control can be returned to the factory reset using the following sequence:</p>
+      <ul>
+        <li>Press and hold the <strong>SET</strong> button until the remote LED light turns white.</li>
+        <li>On the remote, press <strong>9 8 1</strong>.</li>
+      </ul>
+      <p>Successful programming is indicated by two blinks of the white LED light.</p>
+    </div>
   </div>
-</div>
 
-<div class="modal" id="factory-reset-modal" aria-hidden="true">
-  <div class="modal-content">
-    <button class="close-modal" data-modal="factory-reset-modal" aria-label="Close">×</button>
-    <h3>Factory Reset Instructions</h3>
-    <p>At any time, the remote control can be returned to the factory reset using the following sequence:</p>
-    <ul>
-      <li>Press and hold the <strong>SET</strong> button until the remote LED light turns white.</li>
-      <li>On the remote, press <strong>9 8 1</strong>.</li>
-    </ul>
-    <p>Successful programming is indicated by two blinks of the white LED light.</p>
-  </div>
-</div>
-
-<script src="codes_app.js?v=1.0.3"></script>
+  <script src="codes_app.js?v=1.0.6"></script>
 </body>
+
 </html>

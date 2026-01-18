@@ -1,46 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Equipment Form</title>
 
+  <link rel="icon" type="image/png" href="favicon.png">
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css?v=1.0.4">
-  <div id="toast" class="toast"></div>
+  <link rel="stylesheet" href="header.css?v=1.0.6">
+  <link rel="stylesheet" href="styles.css?v=1.0.6">
 </head>
+
 <body>
+  <div id="toast" class="toast"></div>
 
-  <!-- Header -->
-  <header>
-  <nav class="top-nav">
-   <a href="index.html" class="nav-item active">Equipment</a>
-  <a href="codes.html" class="nav-item">RC Settings</a>
-  <a href="rco.html" class="nav-item">Coordinates RCO</a>
-</nav>
+  <!-- Dynamic Header Placeholder -->
+  <div id="main-header"></div>
 
-<!-- Pages -->
-<div class="page active" id="page-equipment">
-</div>
-
-<div class="page" id="page-remote">
-  <div class="placeholder">
-    Remote control settings (coming soon)
-  </div>
-</div>
-
-<div class="page" id="page-rco">
-  <div class="placeholder">
-    RCO coordinates (coming soon)
-  </div>
-</div>
-  </header>
-
-  <!-- Equipment/Materials requests button -->
-  <div class="container">
-    <button class="equipment-requests-btn" id="equipmentRequestsBtn" onclick="submitEquipmentRequests()">
-      Equipment/Materials requests
+  <script src="header.js?v=1.0.6"></script>
+  <!-- Controls Row -->
+  <div class="container main-controls">
+    <button class="equipment-requests-btn flex-item" id="equipmentRequestsBtn" onclick="submitEquipmentRequests()">
+      Requests
     </button>
+    <div id="name-or-history" class="flex-item">
+      <div class="form-group main-name-group" style="margin-bottom: 0;">
+        <input type="text" id="mainSenderName" placeholder="Your Name" autocomplete="off">
+      </div>
+    </div>
   </div>
 
   <!-- Categories & items -->
@@ -48,21 +36,16 @@
 
   <!-- Floating submit button -->
   <button class="submit" id="submitBtn" onclick="submitAll()">
-  <span class="btn-text">Submit</span>
-  <span class="spinner"></span>
-</button>
+    <span class="btn-text">Submit</span>
+    <span class="spinner"></span>
+  </button>
 
 
   <!-- Equipment/Materials requests modal -->
   <div class="modal" id="requestsModal" onclick="overlayCloseRequests(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <div class="modal-title">Equipment/Materials Request</div>
-      
-      <div class="form-group">
-        <label for="requesterName">Your Name:</label>
-        <input type="text" id="requesterName" placeholder="Enter your name" autocomplete="off">
-      </div>
-      
+
       <div class="form-group">
         <label for="materialSelect">Select Equipment/Material:</label>
         <select id="materialSelect" class="material-select">
@@ -70,15 +53,16 @@
           <option value="custom">Enter custom material...</option>
         </select>
       </div>
-      
+
       <div class="form-group" id="customMaterialGroup" style="display: none;">
         <label for="materialInput">Custom Material:</label>
         <input type="text" id="materialInput" placeholder="Enter custom material..." autocomplete="off">
       </div>
-      
+
       <div class="modal-buttons">
         <button type="button" class="cancel-btn" onclick="closeRequestsModal()">Cancel</button>
-        <button type="button" class="send-btn" id="sendRequestsBtn" onclick="sendRequestWithDetails()">Send Request</button>
+        <button type="button" class="send-btn" id="sendRequestsBtn" onclick="sendRequestWithDetails()">Send
+          Request</button>
       </div>
     </div>
   </div>
@@ -90,15 +74,7 @@
 
       <div class="qty-control">
         <button type="button" onclick="changeQty(-1)">−</button>
-        <input
-  type="number"
-  id="qty"
-  min="0"
-  max="99999"
-  maxlength="5"
-  inputmode="numeric"
-  autocomplete="off"
-/>
+        <input type="number" id="qty" min="0" max="99999" maxlength="5" inputmode="numeric" autocomplete="off" />
 
         <button type="button" onclick="changeQty(1)">+</button>
       </div>
@@ -111,7 +87,27 @@
     </div>
   </div>
 
+  <!-- History Modal -->
+  <div class="modal" id="historyModal" onclick="overlayCloseHistory(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-title history-title-row">
+        <span id="historyTitleText">Local History (Device)</span>
+        <button class="edit-name-btn" onclick="toggleEditName()" title="Edit Name">✎</button>
+      </div>
+      <div id="editNameContainer" style="display: none; margin-bottom: 15px;">
+        <input type="text" id="editSenderName" class="edit-name-input" placeholder="Enter new name...">
+      </div>
+      <div id="historyList" class="history-list">
+        <p style="text-align: center; color: #6b7280; padding: 20px;">No history records found.</p>
+      </div>
+      <div class="modal-buttons">
+        <button type="button" class="cancel-btn" onclick="closeHistoryModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
   <!-- App logic -->
-  <script src="app.js?v=1.0.4"></script>
+  <script src="app.js?v=1.0.6"></script>
 </body>
+
 </html>

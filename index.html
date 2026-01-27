@@ -8,8 +8,8 @@
 
   <link rel="icon" type="image/png" href="favicon.png">
   <!-- Styles -->
-  <link rel="stylesheet" href="header.css?v=1.0.6">
-  <link rel="stylesheet" href="styles.css?v=1.0.6">
+  <link rel="stylesheet" href="header.css?v=1.0.7">
+  <link rel="stylesheet" href="styles.css?v=1.0.7">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
   <!-- Dynamic Header Placeholder -->
   <div id="main-header"></div>
 
-  <script src="header.js?v=1.0.6"></script>
+  <script src="header.js?v=1.0.7"></script>
   <!-- Controls Row -->
   <div class="container main-controls">
     <button class="equipment-requests-btn flex-item" id="equipmentRequestsBtn" onclick="submitEquipmentRequests()">
@@ -33,6 +33,15 @@
 
   <!-- Categories & items -->
   <div class="container" id="app"></div>
+
+  <!-- Simple Search Section -->
+  <div class="container">
+    <div style="background: white; border-radius: 12px; padding: 20px; margin-top: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+      <h3 style="margin: 0 0 12px 0; font-size: 18px; color: #1f2937;">🔍 Search Materials</h3>
+      <input type="text" id="searchInput" placeholder="Type to search..." style="width: 100%; padding: 10px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px;">
+      <div id="searchResults" style="margin-top: 12px; display: none;"></div>
+    </div>
+  </div>
 
   <!-- Floating submit button -->
   <button class="submit" id="submitBtn" onclick="submitAll()">
@@ -107,7 +116,7 @@
   </div>
 
   <!-- App logic -->
-  <script src="app.js?v=1.0.6"></script>
+  <script src="app.js?v=1.0.7"></script>
 </body>
 
 </html>

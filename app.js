@@ -7,21 +7,17 @@ let currentId = null;
 let currentItemEl = null;
 let currentCategory = null;
 let topMaterials = []; // Массив для хранения топ материалов
+let equipmentData = null; // Данные оборудования для поиска
 
 /* Load equipment.json */
 fetch("equipment.json")
   .then(r => r.json())
-  .then(buildUI)
-  .catch(() => alert("Failed to load equipment.json"));
-
-/* Load top materials */
-fetch(TOP_MATERIALS_API_URL)
-  .then(r => r.json())
   .then(data => {
-    topMaterials = data;
-    addTopMaterialsSection();
+    equipmentData = data;
+    buildUI(data);
+    setupSimpleSearch();
   })
-  .catch(() => console.log("Failed to load top materials"));
+  .catch(() => alert("Failed to load equipment.json"));
 
 // --- Persistent Sender Name & Layout Logic ---
 function updateControlsLayout() {
@@ -65,7 +61,60 @@ function updateControlsLayout() {
 
 document.addEventListener('DOMContentLoaded', () => {
   updateControlsLayout();
+  loadTopMaterials(); // Load top materials after DOM is ready
 });
+
+/* Load top materials */
+function loadTopMaterials() {
+  const app = document.getElementById("app");
+  if (!app) {
+    console.error("App container not found");
+    return;
+  }
+  
+  // Create loading section immediately
+  const topSection = document.createElement("div");
+  topSection.className = "category top-materials";
+  topSection.dataset.category = "top-materials";
+
+  const header = document.createElement("div");
+  header.className = "category-header";
+  header.innerHTML = `
+    <span>🔥 Top Materials</span>
+    <div class="header-right">
+      <span class="cat-badge"></span>
+      <span>▾</span>
+    </div>
+  `;
+
+  const items = document.createElement("div");
+  items.className = "items";
+  items.innerHTML = '<div style="padding: 20px; text-align: center; color: #6b7280;">LOADING...</div>';
+
+  header.onclick = () => {
+    // Close all other categories first
+    closeAllCategoriesExcept("top-materials");
+    // Then toggle current category
+    items.style.display = items.style.display === "block" ? "none" : "block";
+  };
+
+  topSection.appendChild(header);
+  topSection.appendChild(items);
+  
+  // Insert at the beginning of the app container
+  app.insertBefore(topSection, app.firstChild);
+
+  // Now fetch the actual data
+  fetch(TOP_MATERIALS_API_URL)
+    .then(r => r.json())
+    .then(data => {
+      topMaterials = data;
+      updateTopMaterialsSection(topSection, data);
+    })
+    .catch(() => {
+      items.innerHTML = '<div style="padding: 20px; text-align: center; color: #ef4444;">Failed to load top materials</div>';
+    });
+}
 
 function addToHistory(record) {
   let history = JSON.parse(localStorage.getItem('submitHistory') || '[]');
@@ -251,6 +300,41 @@ function closeAllCategoriesExcept(exceptCategory) {
   });
 }
 
+function updateTopMaterialsSection(topSection, data) {
+  const items = topSection.querySelector(".items");
+  items.innerHTML = ""; // Clear loading text
+
+  if (data.length === 0) {
+    items.innerHTML = '<div style="padding: 20px; text-align: center; color: #6b7280;">No top materials available</div>';
+    return;
+  }
+
+  // Add top materials items
+  data.forEach(item => {
+    const el = document.createElement("div");
+    el.className = "item top-item";
+
+    const name = document.createElement("span");
+    name.textContent = item.name;
+
+    const badge = document.createElement("span");
+    badge.className = "qty-badge";
+
+    idToNameMap[item.id] = item.name;
+
+    el.appendChild(name);
+    el.appendChild(badge);
+
+    el.onclick = () => {
+      currentItemEl = el;
+      currentCategory = "top-materials";
+      openModal(item, badge);
+    };
+
+    items.appendChild(el);
+  });
+}
+
 function addTopMaterialsSection() {
   if (topMaterials.length === 0) return;
 
@@ -382,6 +466,11 @@ function updateQty(value) {
 /* Category badge */
 
 function updateCategoryBadge(category) {
+  if (category === "search") {
+    // For search items, update a search badge or skip
+    return;
+  }
+  
   const catEl = document.querySelector(`.category[data-category="${category}"]`);
   const badge = catEl.querySelector(".cat-badge");
 
@@ -751,6 +840,15 @@ function clearForm() {
     badge.innerText = "";
   });
 
+  // очистить поиск элементы и сепаратор
+  document.querySelectorAll(".search-item").forEach(item => {
+    item.remove();
+  });
+  
+  document.querySelectorAll(".search-separator").forEach(separator => {
+    separator.remove();
+  });
+
   // очистить поле ввода
   const qtyInput = document.getElementById("qty");
   if (qtyInput) qtyInput.value = 0;
@@ -805,5 +903,173 @@ function setSubmitLoading(isLoading) {
     btn.disabled = false;
     text.innerText = "Submit";
   }
+}
+
+// Simple Search Function
+function setupSimpleSearch() {
+  const searchInput = document.getElementById("searchInput");
+  const searchResults = document.getElementById("searchResults");
+  
+  if (!searchInput || !equipmentData) return;
+  
+  let searchTimeout;
+  
+  searchInput.addEventListener("input", (e) => {
+    const query = e.target.value.trim().toLowerCase();
+    
+    clearTimeout(searchTimeout);
+    
+    if (query.length < 2) {
+      searchResults.style.display = "none";
+      return;
+    }
+    
+    searchTimeout = setTimeout(() => {
+      const results = [];
+      
+      // Search through all categories
+      for (const category in equipmentData) {
+        if (Array.isArray(equipmentData[category])) {
+          equipmentData[category].forEach(item => {
+            if (item.name.toLowerCase().includes(query)) {
+              results.push({...item, category});
+            }
+          });
+        } else {
+          for (const subCategory in equipmentData[category]) {
+            equipmentData[category][subCategory].forEach(item => {
+              if (item.name.toLowerCase().includes(query)) {
+                results.push({...item, category, subCategory});
+              }
+            });
+          }
+        }
+      }
+      
+      // Display results
+      if (results.length > 0) {
+        searchResults.innerHTML = results.map(item => `
+          <div style="padding: 12px; border: 1px solid #e5e7eb; border-radius: 8px; margin-bottom: 8px; cursor: pointer; background: #fafafa;" 
+               onclick="selectSearchItem('${item.id}', '${item.name.replace(/'/g, "\\'")}', this)">
+            <div style="font-weight: 500;">${item.name}</div>
+            <div style="font-size: 12px; color: #6b7280; margin-top: 4px;">
+              ${item.subCategory ? `${item.category} → ${item.subCategory}` : item.category}
+            </div>
+          </div>
+        `).join('');
+        searchResults.style.display = "block";
+        
+        // Scroll search results to center of screen
+        setTimeout(() => {
+          searchResults.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+          });
+        }, 100);
+      } else {
+        searchResults.innerHTML = '<div style="padding: 20px; text-align: center; color: #6b7280;">No materials found</div>';
+        searchResults.style.display = "block";
+        
+        // Also scroll "no results" to center
+        setTimeout(() => {
+          searchResults.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+          });
+        }, 100);
+      }
+    }, 300);
+  });
+}
+
+function selectSearchItem(id, name, element) {
+  // Find the original item in its category
+  let originalItemEl = null;
+  let originalCategory = null;
+  
+  // Search through all categories to find the original item
+  document.querySelectorAll(".category").forEach(cat => {
+    const catName = cat.dataset.category;
+    cat.querySelectorAll(".item").forEach(item => {
+      const itemBadge = item.querySelector(".qty-badge");
+      if (itemBadge && idToNameMap[id] === item.querySelector("span").textContent) {
+        originalItemEl = item;
+        originalCategory = catName;
+        return;
+      }
+    });
+  });
+  
+  // If we found the original item, use it instead of creating a new one
+  if (originalItemEl) {
+    currentItemEl = originalItemEl;
+    currentCategory = originalCategory;
+    
+    const badge = originalItemEl.querySelector(".qty-badge");
+    openModal({id, name}, badge);
+    
+    // Highlight the original item
+    originalItemEl.classList.add("selected");
+    originalItemEl.style.background = "#dbeafe";
+    
+    // Highlight search result
+    document.querySelectorAll('#searchResults > div[style*="cursor: pointer"]').forEach(el => {
+      el.style.background = '#fafafa';
+    });
+    element.style.background = '#dbeafe';
+    
+    // Scroll to the original item
+    originalItemEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Open the category if it's closed
+    const itemsContainer = originalItemEl.closest(".items, .subcategory-items");
+    if (itemsContainer && itemsContainer.style.display === "none") {
+      itemsContainer.style.display = "block";
+      // Update arrow if it's a subcategory
+      const subHeader = itemsContainer.previousElementSibling;
+      if (subHeader && subHeader.classList.contains("subcategory-header")) {
+        const arrow = subHeader.querySelector("span:last-child");
+        if (arrow) arrow.textContent = "▾";
+      }
+    }
+    
+    return;
+  }
+  
+  // Fallback: create a new item if original not found
+  let searchContainer = document.getElementById('searchResults');
+  if (!searchContainer) return;
+  
+  const itemEl = document.createElement("div");
+  itemEl.className = "item search-item";
+  itemEl.style.cssText = "padding: 14px 20px; border-top: 1px solid rgba(148, 163, 184, 0.3); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 15px; background: #f7f7f9; transition: background 0.2s ease;";
+  
+  const nameSpan = document.createElement("span");
+  nameSpan.textContent = name;
+  
+  const badge = document.createElement("span");
+  badge.className = "qty-badge";
+  badge.style.cssText = "background: #3b82f6; color: white; padding: 2px 8px; border-radius: 12px; font-size: 12px; display: none;";
+  
+  itemEl.appendChild(nameSpan);
+  itemEl.appendChild(badge);
+  
+  idToNameMap[id] = name;
+  
+  itemEl.onclick = () => {
+    currentItemEl = itemEl;
+    currentCategory = "search";
+    openModal({id, name}, badge);
+  };
+  
+  currentItemEl = itemEl;
+  currentCategory = "search";
+  
+  openModal({id, name}, badge);
+  
+  document.querySelectorAll('#searchResults > div[style*="cursor: pointer"]').forEach(el => {
+    el.style.background = '#fafafa';
+  });
+  element.style.background = '#dbeafe';
 }
 

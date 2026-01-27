@@ -110,9 +110,31 @@ function selectType(type) {
 }
 
 
+function convertCoordinates(coordString) {
+  // Pattern to match coordinates with directions like "50.267554°N 95.868955°W"
+  const pattern = /([+-]?\d+\.?\d*)°([NSEW])\s*([+-]?\d+\.?\d*)°([NSEW])/i;
+  
+  const match = coordString.trim().match(pattern);
+  if (match) {
+    let [, latValue, latDir, lonValue, lonDir] = match;
+    
+    let lat = parseFloat(latValue);
+    let lon = parseFloat(lonValue);
+    
+    // Apply direction signs
+    if (latDir.toUpperCase() === 'S') lat = -lat;
+    if (lonDir.toUpperCase() === 'W') lon = -lon;
+    
+    return `${lat},${lon}`;
+  }
+  
+  // Return original if no conversion needed
+  return coordString;
+}
+
 function saveRCO() {
   const name = document.getElementById("name").value.trim();
-  const coords = document.getElementById("coords").value.trim();
+  let coords = document.getElementById("coords").value.trim();
 
   if (!selectedType) {
     return alert("Please select RCO type");
@@ -122,8 +144,11 @@ function saveRCO() {
     return alert("Fill all fields");
   }
 
+  // Try to convert coordinates if they're in degrees format
+  coords = convertCoordinates(coords);
+
   if (!/^[-\d.]+,\s*[-\d.]+$/.test(coords)) {
-    return alert("Coordinates must be in format: lat,lng");
+    return alert("Coordinates must be in format: lat,lng or 50.267554°N 95.868955°W");
   }
 
   const type = selectedType;

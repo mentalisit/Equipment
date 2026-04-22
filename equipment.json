@@ -58,7 +58,9 @@
     { "id": "3000408", "name": "APC Mechanical Splice" },
     { "id": "3000410", "name": "UPC Mechanical Splice" },
     { "id": "KIT-6+",  "name": "Kit: Eero 6+, MC, Transceiver (blue)" },
-    { "id": "KIT-Pro", "name": "KitPro: Eero Pro, 10GB MC, CX 10G, RCO 10G, 2x Yellow LC patch cable, 2x Blue bulkhead" }
+    { "id": "KIT-Pro", "name": "KitPro: Eero Pro, 10GB MC, CX 10G, RCO 10G, 2x Yellow LC patch cable, 2x Blue bulkhead" },
+    { "id": "4005038", "name": "Nokia XS-010X-R XGS PON ONT"},
+    { "id": "2000013", "name":	"3.5m APC/APC RCO Jumpers"}
   ],
   
   "High speed plan equipment": [

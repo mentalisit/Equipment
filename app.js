@@ -1,12 +1,10 @@
 const API_URL = "https://script.google.com/macros/s/AKfycby3Cub0ypbHD_r773MmuK1SPm0cDekR7vKIr2i5ex3kro_r9iKMfRvyP6bdjHDIK_4gPg/exec";
-const TOP_MATERIALS_API_URL = "https://script.google.com/macros/s/AKfycby3Cub0ypbHD_r773MmuK1SPm0cDekR7vKIr2i5ex3kro_r9iKMfRvyP6bdjHDIK_4gPg/exec"; // URL для топ материалов
 const result = {};
 const idToNameMap = {};
 
 let currentId = null;
 let currentItemEl = null;
 let currentCategory = null;
-let topMaterials = []; // Массив для хранения топ материалов
 let equipmentData = null; // Данные оборудования для поиска
 
 /* Load equipment.json */
@@ -61,60 +59,8 @@ function updateControlsLayout() {
 
 document.addEventListener('DOMContentLoaded', () => {
   updateControlsLayout();
-  loadTopMaterials(); // Load top materials after DOM is ready
 });
 
-/* Load top materials */
-function loadTopMaterials() {
-  const app = document.getElementById("app");
-  if (!app) {
-    console.error("App container not found");
-    return;
-  }
-  
-  // Create loading section immediately
-  const topSection = document.createElement("div");
-  topSection.className = "category top-materials";
-  topSection.dataset.category = "top-materials";
-
-  const header = document.createElement("div");
-  header.className = "category-header";
-  header.innerHTML = `
-    <span>🔥 Top Materials</span>
-    <div class="header-right">
-      <span class="cat-badge"></span>
-      <span>▾</span>
-    </div>
-  `;
-
-  const items = document.createElement("div");
-  items.className = "items";
-  items.innerHTML = '<div style="padding: 20px; text-align: center; color: #6b7280;">LOADING...</div>';
-
-  header.onclick = () => {
-    // Close all other categories first
-    closeAllCategoriesExcept("top-materials");
-    // Then toggle current category
-    items.style.display = items.style.display === "block" ? "none" : "block";
-  };
-
-  topSection.appendChild(header);
-  topSection.appendChild(items);
-  
-  // Insert at the beginning of the app container
-  app.insertBefore(topSection, app.firstChild);
-
-  // Now fetch the actual data
-  fetch(TOP_MATERIALS_API_URL)
-    .then(r => r.json())
-    .then(data => {
-      topMaterials = data;
-      updateTopMaterialsSection(topSection, data);
-    })
-    .catch(() => {
-      items.innerHTML = '<div style="padding: 20px; text-align: center; color: #ef4444;">Failed to load top materials</div>';
-    });
-}
 
 function addToHistory(record) {
   let history = JSON.parse(localStorage.getItem('submitHistory') || '[]');
@@ -300,104 +246,6 @@ function closeAllCategoriesExcept(exceptCategory) {
   });
 }
 
-function updateTopMaterialsSection(topSection, data) {
-  const items = topSection.querySelector(".items");
-  items.innerHTML = ""; // Clear loading text
-
-  if (data.length === 0) {
-    items.innerHTML = '<div style="padding: 20px; text-align: center; color: #6b7280;">No top materials available</div>';
-    return;
-  }
-
-  // Add top materials items
-  data.forEach(item => {
-    const el = document.createElement("div");
-    el.className = "item top-item";
-
-    const name = document.createElement("span");
-    name.textContent = item.name;
-
-    const badge = document.createElement("span");
-    badge.className = "qty-badge";
-
-    idToNameMap[item.id] = item.name;
-
-    el.appendChild(name);
-    el.appendChild(badge);
-
-    el.onclick = () => {
-      currentItemEl = el;
-      currentCategory = "top-materials";
-      openModal(item, badge);
-    };
-
-    items.appendChild(el);
-  });
-}
-
-function addTopMaterialsSection() {
-  if (topMaterials.length === 0) return;
-
-  const app = document.getElementById("app");
-
-  // Create top materials section
-  const topSection = document.createElement("div");
-  topSection.className = "category top-materials";
-  topSection.dataset.category = "top-materials";
-
-  const header = document.createElement("div");
-  header.className = "category-header";
-  header.innerHTML = `
-    <span>🔥 Top Materials</span>
-    <div class="header-right">
-      <span class="cat-badge"></span>
-      <span>▾</span>
-    </div>
-  `;
-
-  const items = document.createElement("div");
-  items.className = "items";
-
-  header.onclick = () => {
-    // Close all other categories first
-    closeAllCategoriesExcept("top-materials");
-
-    // Then toggle current category
-    items.style.display = items.style.display === "block" ? "none" : "block";
-  };
-
-  // Add top materials items
-  topMaterials.forEach(item => {
-    const el = document.createElement("div");
-    el.className = "item top-item";
-
-    const name = document.createElement("span");
-    name.textContent = item.name;
-
-    const badge = document.createElement("span");
-    badge.className = "qty-badge";
-
-    idToNameMap[item.id] = item.name;
-
-    el.appendChild(name);
-    el.appendChild(badge);
-
-    el.onclick = () => {
-      currentItemEl = el;
-      currentCategory = "top-materials";
-      openModal(item, badge);
-    };
-
-    items.appendChild(el);
-  });
-
-  topSection.appendChild(header);
-  topSection.appendChild(items);
-
-  // Insert at the beginning of the app container
-  app.insertBefore(topSection, app.firstChild);
-}
-
 /* Modal logic */
 
 function openModal(item, badge) {
@@ -429,7 +277,12 @@ function changeQty(delta) {
 
 document.querySelectorAll(".preset").forEach(preset => {
   preset.addEventListener("click", () => {
-    updateQty(Number(preset.innerText));
+    const text = preset.innerText.trim();
+    if (text.startsWith("+") || text.startsWith("-")) {
+      changeQty(Number(text));
+    } else {
+      updateQty(Number(text));
+    }
   });
 });
 

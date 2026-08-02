@@ -145,30 +145,6 @@ body {
   box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
 }
 
-/* Top materials special styling */
-.top-materials {
-  background: linear-gradient(180deg, #fff7ed, #fed7aa);
-  border: 1px solid rgba(249, 115, 22, 0.3);
-  box-shadow: 0 10px 26px rgba(249, 115, 22, 0.15);
-}
-
-.top-materials .category-header {
-  background: linear-gradient(90deg, rgba(249, 115, 22, 0.1), transparent);
-}
-
-.top-item {
-  background: #fff5f0 !important;
-  font-weight: 600 !important;
-  border-left: 3px solid #f97316 !important;
-}
-
-.top-item:nth-child(even) {
-  background: #ffedd5 !important;
-}
-
-.top-item:hover {
-  background: #fed7aa !important;
-}
 
 .category-header {
   padding: 14px;

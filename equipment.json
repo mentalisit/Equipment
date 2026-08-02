@@ -1,23 +1,17 @@
 {
   "Routers & equimpement": [
-    { "id": "3001001", "name": "Rb4011" },
-    { "id": "3001204", "name": "Eero 6 +" },
-    { "id": "3001205", "name": "Eero Pro 6 E" },
+	  { "id": "3001204", "name": "Eero 6 +" },
     { "id": "3001207", "name": "Eero 6+ mount" },
-    { "id": "3001208", "name": "Eero Pro 6 E Mount" },
-    { "id": "3001006", "name": "Hex Switch" },
-    { "id": "3001002", "name": "hAP AC Switch" },
+	  { "id": "4005038", "name": "Nokia XS-010X-R XGS PON ONT"},
+	  { "id": "3001006", "name": "Hex Switch" },
+    { "id": "3001001", "name": "Rb4011" },
     { "id": "3021008", "name": "Power Bar" },
-    { "id": "3001003", "name": "cAP" },
-    { "id": "3001004", "name": "wAP" },
     { "id": "3001100", "name": "KAON 2100" },
     { "id": "3001101", "name": "KAON Remote" },
     { "id": "3001105", "name": "KAON 6200" },
-    { "id": "3002500", "name": "Coax/Ethernet Adaptor" },
     { "id": "3000150", "name": "Transceiver (blue)" },
     { "id": "3000151", "name": "Transceiver (Yellow)(Purple)" },
     { "id": "3001000", "name": "Media Converter (Optcore)" },
-    { "id": "3001005", "name": "Media converter (Mikrotik)" },
     { "id": "3001209", "name": "Eero POE 6" },
     { "id": "3001210", "name": "Eero POE Gateway" },
     { "id": "3001211", "name": "Eero Outdoor 7" },
@@ -55,27 +49,22 @@
     { "id": "3002600", "name": "Seal Tags" },
     { "id": "1009151", "name": "Faceplate" },
     { "id": "2000904", "name": "Green bulkhead" },
-    { "id": "3000408", "name": "APC Mechanical Splice" },
-    { "id": "3000410", "name": "UPC Mechanical Splice" },
-    { "id": "KIT-6+",  "name": "Kit: Eero 6+, MC, Transceiver (blue)" },
-    { "id": "KIT-Pro", "name": "KitPro: Eero Pro, 10GB MC, CX 10G, RCO 10G, 2x Yellow LC patch cable, 2x Blue bulkhead" },
-    { "id": "4005038", "name": "Nokia XS-010X-R XGS PON ONT"},
+    { "id": "3000408", "name": "Green APC Mechanical Splice" },
+    { "id": "3000410", "name": "Blue UPC Mechanical Splice" },
     { "id": "2000013", "name":	"3.5m APC/APC RCO Jumpers"}
   ],
   
   "High speed plan equipment": [
-    { "id": "3001300", "name": "CRS 305" },
     { "id": "3001008", "name": "10GB Media converter (Optcore)" },
+    { "id": "2000002", "name": "Yellow LC patch cable" },
+    { "id": "2000903", "name": "Blue bulkhead" },
+    { "id": "3000170", "name": "RCO 10G Transceiver" },
+    { "id": "3000171", "name": "CX 10G Transceiver" },
+	  { "id": "3001300", "name": "CRS 305" },
     { "id": "3000157", "name": "RJ45 1G Transceiver" },
     { "id": "3000159", "name": "RJ45 2.5G Transceiver" },
     { "id": "3000156", "name": "RJ45 10G Transceiver" },
-    { "id": "3000163", "name": "C-temp CX 10G Transceiver" },
-    { "id": "3000162", "name": "C-temp RCO 10G Transceiver" },
-    { "id": "2000002", "name": "Yellow LC patch cable" },
-    { "id": "2000903", "name": "Blue bulkhead" },
-    { "id": "3000170", "name": "I-temp RCO 10G Transceiver" },
-    { "id": "3000171", "name": "I-temp CX 10G Transceiver" },
-	  { "id": "3000161", "name": "Green 10G Transceiver (40Km)" },
+    { "id": "3000161", "name": "Green 10G Transceiver (40Km)" },
     { "id": "3000160", "name": "Grey 10G Tranceiver (40Km)" }
   ],
 
@@ -175,6 +164,18 @@
       { "id": "3002811", "name": "T fitting" },
       { "id": "3002812", "name": "outside elbow" },
       { "id": "3002813", "name": "End Cap" }
-    ]
+    ],
+
+	  "old": [
+		{ "id": "3001205", "name": "Eero Pro 6 E" },    	
+    { "id": "3001208", "name": "Eero Pro 6 E Mount" },
+    { "id": "3001002", "name": "hAP AC Switch" },
+		{ "id": "3001003", "name": "cAP" },
+		{ "id": "3001004", "name": "wAP" },
+		{ "id": "3001005", "name": "Media converter (Mikrotik)" },
+		{ "id": "3002500", "name": "Coax/Ethernet Adaptor" },
+		{ "id": "3000163", "name": "C-temp CX 10G Transceiver" },
+    { "id": "3000162", "name": "C-temp RCO 10G Transceiver" }
+	  ]
   }
 }

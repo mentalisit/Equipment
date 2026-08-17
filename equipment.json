@@ -1,6 +1,7 @@
 {
   "Routers & equimpement": [
-	  { "id": "3001204", "name": "Eero 6 +" },
+	  { "id": "3001214", "name": "Eero 7" },
+    { "id": "3001204", "name": "Eero 6 +" },
     { "id": "3001207", "name": "Eero 6+ mount" },
 	  { "id": "4005038", "name": "Nokia XS-010X-R XGS PON ONT"},
 	  { "id": "3001006", "name": "Hex Switch" },
@@ -51,6 +52,7 @@
     { "id": "2000904", "name": "Green bulkhead" },
     { "id": "3000408", "name": "Green APC Mechanical Splice" },
     { "id": "3000410", "name": "Blue UPC Mechanical Splice" },
+    { "id": "3000411", "name": "SC/UPC to SC/APC ONT adapter" },
     { "id": "2000013", "name":	"3.5m APC/APC RCO Jumpers"}
   ],
   
